@@ -4,28 +4,30 @@
 
 ## Core Problem
 
-People who want to send flowers are stuck on which flowers to buy.
+People who want to send flowers are stuck on "which flowers?" — buried under a 5-step questionnaire, fake payment, and CRM.
 
 ## First Principles Breakdown
 
-1. The user doesn't know flower language. The entire value is tell me what to buy.
-2. Context determines the recommendation. Who, what occasion, relationship.
-3. Flower meaning data is static. A lookup table.
+1. User doesn't know flower language — "tell me what to buy" IS the product
+2. Context determines recommendation: who, occasion, relationship
+3. User wants to act, not browse — shortest path to order placed
+4. Flower data is static — a lookup table
 
 ## Essential Features
 
-| Priority | Feature |
-|----------|---------|
-| P0 | Scene + budget -> bouquet recommendation |
-| P0 | Show 3 options with flower list, meaning, price |
+| P0 | Scene + budget → recommendation |
+| P0 | 3 bouquet options with details |
 | P0 | Place order |
-| P1 | User auth |
-| P1 | Order history |
+| P1 | User auth, order history |
 
-## Reconstruction Blueprint
+## Over-Engineering
 
-14 files, ~2,500 lines (down from 28 files, ~6,500 lines).
+- 768-line recommendation wizard (30 fields → 3 suffice)
+- 819-line CRM with allergy tracking and personality profiling
+- 277-line fake payment page (2-second spinner + success)
+- 377-line MinePage (entirely hardcoded stats)
+- Mock data duplicated across 6 locations
 
-## Musk\'s Razor
+## Musk's Razor
 
-Cut payment simulation, MinePage, recipient personality tracking. This is a flower app, not Salesforce.
+14 files, ~2,500 lines (from 28 files, ~6,500). This is a flower app, not Salesforce.
